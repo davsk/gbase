@@ -1,30 +1,33 @@
 ////////////////////////////////////////////////////////////////
-// '$name'                                                     /
+// 'config.go'                                                 /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
 // that can be found in the LICENSE file.                      /
+//                                                             /
+// by David Skinner                                            /
+// on July 12, 2018                                            /
+// for Davsk℠ Universe 4.0 project gbase                       /
+//                                                             /
 ////////////////////////////////////////////////////////////////
 
-// 'config.go'
-
-// by David Skinner
-// on July 11, 2018
-// for Davsk℠ Universe 4.0 project gbase
-
-// package config load config data from file or creates the file if it does not exist.
+// package config loads config data from file
+// or creates the file if it does not exist.
 package config
+
+import "davsk.net/gbase/pkg/toml_config"
 
 // 'config_con_client.go'
 
-// constants.
 const (
+	// const RequiredTitle is base of filename
+	// and Title of Toml file.
 	aRequiredTitle = "config_con_client"
 )
 
 // ConfigConClient contains all config data to start program.
 type ConfigConClient struct {
-	Title string
+	toml_config.Client
 }
 
 func NewConfigConClient() ConfigConClient {
@@ -39,8 +42,9 @@ func (*ConfigConClient) MustUpdate() {
 
 // 'config_web_client.go'
 
-// constants.
 const (
+	// const RequiredTitle is base of filename
+	// and Title of Toml file.
 	bRequiredTitle = "config_web_client"
 )
 
@@ -61,8 +65,9 @@ func (*ConfigWebClient) MustUpdate() {
 
 // 'config_gui_client.go'
 
-// constants.
 const (
+	// const RequiredTitle is base of filename
+	// and Title of Toml file.
 	cRequiredTitle = "config_gui_client"
 )
 
@@ -83,8 +88,9 @@ func (*ConfigGuiClient) MustUpdate() {
 
 // 'config_test.go'
 
-// constants.
 const (
+	// const RequiredTitle is base of filename
+	// and Title of Toml file.
 	dRequiredTitle = "config_test"
 )
 
@@ -105,8 +111,9 @@ func (*ConfigTest) MustUpdate() {
 
 // 'config_game_server.go'
 
-// constants.
 const (
+	// const RequiredTitle is base of filename
+	// and Title of Toml file.
 	eRequiredTitle = "config_game_server"
 )
 
@@ -127,8 +134,9 @@ func (*ConfigGameServer) MustUpdate() {
 
 // 'config_acct_server.go'
 
-// constants.
 const (
+	// const RequiredTitle is base of filename
+	// and Title of Toml file.
 	fRequiredTitle = "config_acct_server"
 )
 
@@ -149,8 +157,9 @@ func (*ConfigAcctServer) MustUpdate() {
 
 // 'config_test_server.go'
 
-// constants.
 const (
+	// const RequiredTitle is base of filename
+	// and Title of Toml file.
 	gRequiredTitle = "config_test_server"
 )
 
