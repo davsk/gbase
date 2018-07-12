@@ -1,6 +1,10 @@
-// Copyright (c) 2018 Davsk℠. All Rights Reserved.
-// Use of this source code is governed by an ISC License (ISC)
-// that can be found in the LICENSE file.
+////////////////////////////////////////////////////////////////
+// '$name'                                                     /
+//                                                             /
+// Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
+// Use of this source code is governed by an ISC License (ISC) /
+// that can be found in the LICENSE file.                      /
+////////////////////////////////////////////////////////////////
 
 // 'toml_config.go'
 
@@ -17,10 +21,14 @@ const kToml = ".toml" // Config file type
 
 func Load(title string) error {
 	filePath := custom_path.Join(title + kToml)
+
+	return nil
 }
 
 func Save(title string) error {
 	filePath := custom_path.Join(title + kToml)
+
+	return nil
 }
 
 func MustLoad(title string) {
