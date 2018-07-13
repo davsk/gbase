@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'structs.go'                                                 /
+// 'structs.go'                                                /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /

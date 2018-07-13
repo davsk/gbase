@@ -13,24 +13,35 @@
 
 package toml_config
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
+
+const kTest = "unittest"
 
 type ConfigInterface struct {
 	Title string
 }
 
 func TestLoad(t *testing.T) {
-
-}
-
-func TestMustLoad(t *testing.T) {
-
-}
-
-func TestSave(t *testing.T) {
-
+	var v ConfigInterface
+	err := Load(kTest, &v)
+	fmt.Println(err)
+	// Output:
+	// open unittest.toml: The system cannot find the file specified.
 }
 
 func TestMustSave(t *testing.T) {
+	var v ConfigInterface
+	v.Title = kTest
+	MustSave(kTest, &v)
+}
 
+func TestMustLoad(t *testing.T) {
+	var v ConfigInterface
+	MustLoad(kTest, &v)
+	fmt.Println(v)
+	// Output
+	// {unittest}
 }
