@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////
 // 'config.go'                                                 /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
@@ -9,7 +9,7 @@
 // on July 12, 2018                                            /
 // for Davsk℠ Universe 4.0 project gbase                       /
 //                                                             /
-////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////
 
 // package config loads config data from file
 // or creates the file if it does not exist.

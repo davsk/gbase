@@ -1,4 +1,4 @@
-// //////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////
 // 'toml_config.go'                                            /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
@@ -6,10 +6,10 @@
 // that can be found in the LICENSE file.                      /
 //                                                             /
 // by David Skinner                                            /
-// on 7 12, 2018                                               /
+// on July 12, 2018                                            /
 // for Davsk℠ Universe 4.0 project gbase                       /
 //                                                             /
-// //////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////
 
 // package toml_config provides helper functions
 // to load and save toml config files.
@@ -27,6 +27,7 @@ import (
 const kToml = ".toml"
 
 // Load receives required title string and struct interface
+// and builds file name path from title
 // and returns error code after attempting to fill interface.
 func Load(title string, v interface{}) error {
 	// create file path to config file.
@@ -40,6 +41,7 @@ func Load(title string, v interface{}) error {
 }
 
 // Save receives required title string and struct interface
+// and builds file name path from title
 // and returns error code after attempting to save interface.
 func Save(title string, v interface{}) error {
 	// create file path to config file.
@@ -60,6 +62,7 @@ func Save(title string, v interface{}) error {
 }
 
 // Load receives required title string and struct interface
+// and builds file name path from title
 // and after attempting to fill interface panics on failure.
 func MustLoad(title string, v interface{}) {
 	if err := Load(title, v); err != nil {
@@ -68,6 +71,7 @@ func MustLoad(title string, v interface{}) {
 }
 
 // Save receives required title string and struct interface
+// and builds file name path from title
 // and after attempting to save interface will panic on failure.
 func MustSave(title string, v interface{}) {
 	if err := Save(title, v); err != nil {

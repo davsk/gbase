@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////
 // 'custom_path_test.go'                                       /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
@@ -9,7 +9,7 @@
 // on July 12, 2018                                            /
 // for Davsk℠ Universe 4.0 project gbase                       /
 //                                                             /
-////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////
 
 package custom_path
 
@@ -18,6 +18,8 @@ import (
 	"testing"
 )
 
+// Complete testing includes starting in a different work
+// directory and setting the -custom-path parameter.
 func TestJoin(t *testing.T) {
 	fpath := Join("test.tst")
 	fmt.Printf("%s", fpath)

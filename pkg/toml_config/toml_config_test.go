@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////
 // 'toml_config_test.go'                                       /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
@@ -9,11 +9,15 @@
 // on July 12, 2018                                               /
 // for Davsk℠ Universe 4.0 project gbase                       /
 //                                                             /
-////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////
 
 package toml_config
 
 import "testing"
+
+type ConfigInterface struct {
+	Title string
+}
 
 func TestLoad(t *testing.T) {
 
