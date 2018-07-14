@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'ConClient_test.go'                                         /
+// 'Server_test.go'                                            /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -18,6 +18,10 @@ import (
 	"testing"
 )
 
-func TestConClient(t *testing.T) {
-	fmt.Println(NewConClient())
+func TestServer_Default(t *testing.T) {
+	var game, acct, foobar Server
+	game.Default("game")
+	acct.Default("acct")
+	foobar.Default("foobar")
+	fmt.Println(game, acct, foobar)
 }

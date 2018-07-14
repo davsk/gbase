@@ -40,7 +40,7 @@ func NewGameServer() GameServer {
 		gs.MustUpdate()
 	}
 
-	return ts
+	return gs
 }
 
 // Default GameServer
@@ -52,6 +52,6 @@ func (gs *GameServer) Default() {
 }
 
 // MustUpdate saves config, panics on fail.
-func (gs *TestServer) MustUpdate() {
+func (gs *GameServer) MustUpdate() {
 	toml_config.MustSave(kGsTitle, gs)
 }
