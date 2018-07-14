@@ -24,4 +24,6 @@ func TestConnect_Default(t *testing.T) {
 	acct.Default("acct")
 	stuff.Default("stuff")
 	fmt.Println(game, acct, stuff)
+	// Output:
+	// {localhost 5432 universe postgres password} {localhost 5432 business postgres password} {localhost 5432 stuff postgres password}
 }

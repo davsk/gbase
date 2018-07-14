@@ -20,4 +20,6 @@ import (
 
 func TestConClient(t *testing.T) {
 	fmt.Println(NewConClient())
+	// Output:
+	// {config_con_client {0 email} {davsk.sytes.net {80 433 5000}}}
 }

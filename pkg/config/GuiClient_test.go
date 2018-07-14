@@ -20,4 +20,6 @@ import (
 
 func TestGuiClient(t *testing.T) {
 	fmt.Println(NewGuiClient())
+	// Output:
+	// {config_gui_client {0 email} {davsk.sytes.net {80 433 5000}}}
 }

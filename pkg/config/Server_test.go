@@ -24,4 +24,6 @@ func TestServer_Default(t *testing.T) {
 	acct.Default("acct")
 	foobar.Default("foobar")
 	fmt.Println(game, acct, foobar)
+	// Output:
+	// {davsk.sytes.net {80 433 5000}} {universe.gameserve.com {80 433 5000}} {foobar {80 433 5000}}
 }

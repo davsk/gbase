@@ -21,4 +21,6 @@ import (
 func TestNewTestServer(t *testing.T) {
 	ts := NewTestServer()
 	fmt.Println(ts)
+	// Output:
+	// {config_test_server {80 433 5000} {8000 8080 5001} {localhost 5432 universe postgres password} {localhost 5432 business postgres password}}
 }

@@ -22,4 +22,6 @@ func TestOwner_Default(t *testing.T) {
 	var ow Owner
 	ow.Default()
 	fmt.Println(ow)
+	// Output:
+	// {0 email}
 }

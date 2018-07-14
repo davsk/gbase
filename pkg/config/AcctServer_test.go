@@ -21,4 +21,6 @@ import (
 func TestNewAcctServer(t *testing.T) {
 	as := NewAcctServer()
 	fmt.Println(as)
+	// Output:
+	// {config_acct_server {80 433 5000} {localhost 5432 business postgres password}}
 }

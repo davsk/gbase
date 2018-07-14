@@ -21,4 +21,6 @@ import (
 func TestNewGameServer(t *testing.T) {
 	gs := NewGameServer()
 	fmt.Println(gs)
+	// Output:
+	// {config_game_server {80 433 5000} {universe.gameserve.com {80 433 5000}} {localhost 5432 universe postgres password}}
 }

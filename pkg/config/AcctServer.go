@@ -39,7 +39,7 @@ func NewAcctServer() AcctServer {
 		as.MustUpdate()
 	}
 
-	return ts
+	return as
 }
 
 // Default AcctServer receives title string.

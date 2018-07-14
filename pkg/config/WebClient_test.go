@@ -20,4 +20,6 @@ import (
 
 func TestWebClient(t *testing.T) {
 	fmt.Println(NewWebClient())
+	// Output:
+	// {config_web_client {0 email} {davsk.sytes.net {80 433 5000}}}
 }

@@ -22,4 +22,6 @@ func TestPorts_Default(t *testing.T) {
 	var p Ports
 	p.Default()
 	fmt.Println(p)
+	// Output:
+	// {80 433 5000}
 }
