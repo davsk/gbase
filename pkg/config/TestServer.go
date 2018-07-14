@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'test_server.go'                                            /
+// 'TestServer.go'                                            /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -30,17 +30,6 @@ type TestServer struct {
 	Acct       Connect
 }
 
-// Default TestServer receives title string.
-func (ts *TestServer) Default() {
-	ts.Title = kTsTitle
-	ts.GameServer.Default()
-	ts.AcctServer.Http = 8000
-	ts.AcctServer.Https = 8080
-	ts.AcctServer.Rpc = 5001
-	ts.Game.Default("game")
-	ts.Acct.Default("acct")
-}
-
 // NewTestServer creates TestServer with saved or default values.
 func NewTestServer() TestServer {
 	var ts TestServer
@@ -53,6 +42,17 @@ func NewTestServer() TestServer {
 	}
 
 	return ts
+}
+
+// Default TestServer receives title string.
+func (ts *TestServer) Default() {
+	ts.Title = kTsTitle
+	ts.GameServer.Default()
+	ts.AcctServer.Http = 8000
+	ts.AcctServer.Https = 8080
+	ts.AcctServer.Rpc = 5001
+	ts.Game.Default("game")
+	ts.Acct.Default("acct")
 }
 
 // MustUpdate saves config, panics on fail.

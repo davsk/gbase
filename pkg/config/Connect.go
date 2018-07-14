@@ -1,52 +1,49 @@
 // /////////////////////////////////////////////////////////////
-// 'structs.go'                                                /
+// 'Connect.go'                                                /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
 // that can be found in the LICENSE file.                      /
 //                                                             /
 // by David Skinner                                            /
-// on July 12, 2018                                            /
+// on July 14, 2018                                            /
 // for Davsk℠ Universe 4.0 project gbase                       /
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
 package config
 
-// Server base config interface to find server.
-type Server struct {
-	Host string
-	Ports
+// Connect base config interface to connect.
+type Connect struct {
+	Host     string
+	Port     uint16
+	Database string
+	User     string
+	Password string
 }
 
-// Default Server receives choice string for host.
-func (s *Server) Default(choice string) {
-	// Default Host names
+// Default Connect receives choice of databases.
+func (c *Connect) Default(choice string) {
 	switch choice {
 	case "game":
-		s.Host = "davsk.sytes.net"
+		c.Host = "localhost"
+		c.Port = 5432
+		c.Database = "universe"
+		c.User = "postgres"
+		c.Password = "password"
 		break
 	case "acct":
-		s.Host = "universe.gameserve.com"
+		c.Host = "localhost"
+		c.Port = 5432
+		c.Database = "business"
+		c.User = "postgres"
+		c.Password = "password"
 		break
 	default:
-		s.Host = choice
+		c.Host = "localhost"
+		c.Port = 5432
+		c.Database = choice
+		c.User = "postgres"
+		c.Password = "password"
 	}
-
-	// Default Ports
-	s.Ports.Default()
-}
-
-// Client config interface for all clients.
-type Client struct {
-	Title string
-	Owner
-	Game Server
-}
-
-// Default Client receives title.
-func (c *Client) Default(title string) {
-	c.Title = title
-	c.Owner.Default()
-	c.Game.Default("game")
 }

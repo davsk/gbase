@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'test_server_test.go'                                       /
+// 'Ports_test.go'                                             /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -18,7 +18,8 @@ import (
 	"testing"
 )
 
-func TestNewTestServer(t *testing.T) {
-	ts := NewTestServer()
-	fmt.Println(ts)
+func TestPorts_Default(t *testing.T) {
+	var p Ports
+	p.Default()
+	fmt.Println(p)
 }
