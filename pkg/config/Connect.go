@@ -14,6 +14,7 @@
 package config
 
 // Connect base config interface to connect.
+// This type is to be embedded or used in a config struct.
 type Connect struct {
 	Host     string
 	Port     uint16

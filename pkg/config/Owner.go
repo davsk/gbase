@@ -14,6 +14,7 @@
 package config
 
 // Owner base config interface for clients.
+// This type is to be embedded or used in a config struct.
 type Owner struct {
 	Id    uint64 // 'toml:"OwnerId"'
 	email string

@@ -15,30 +15,7 @@
 // or creates the file if it does not exist.
 package config
 
-import "davsk.net/gbase/pkg/toml_config"
-
 // 'config_con_client.go'
-
-const (
-	// const RequiredTitle is base of filename
-	// and Title of Toml file.
-	aRequiredTitle = "config_con_client"
-)
-
-// ConfigConClient contains all config data to start program.
-type ConfigConClient struct {
-	toml_config.Client
-}
-
-func NewConfigConClient() ConfigConClient {
-	var config ConfigConClient
-
-	return config
-}
-
-func (*ConfigConClient) MustUpdate() {
-
-}
 
 // 'config_web_client.go'
 

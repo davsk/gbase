@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'Ports.go'                                                  /
+// 'ConClient_test.go'                                         /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -13,17 +13,11 @@
 
 package config
 
-// Ports base config interface for server io.
-// This type is to be embedded or used in a config struct.
-type Ports struct {
-	Http  uint16
-	Https uint16
-	Rpc   uint16
-}
+import (
+	"fmt"
+	"testing"
+)
 
-// Default Ports.
-func (p *Ports) Default() {
-	p.Http = 80
-	p.Https = 433
-	p.Rpc = 5000
+func TestConClient(t *testing.T) {
+	fmt.Println(NewWebClient())
 }
