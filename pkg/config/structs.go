@@ -141,23 +141,3 @@ func (as *AcctServer) Default(title string) {
 	as.Ports.Default()
 	as.Acct.Default("acct")
 }
-
-// TestServer config interface for test server.
-type TestServer struct {
-	Title      string
-	GameServer Ports
-	AcctServer Ports
-	Game       Connect
-	Acct       Connect
-}
-
-// Default TestServer receives title string.
-func (ts *TestServer) Default(title string) {
-	ts.Title = title
-	ts.GameServer.Default("game")
-	ts.AcctServer.Http = 8000
-	ts.AcctServer.Https = 8080
-	ts.AcctServer.Rpc = 5001
-	ts.Game.Default("game")
-	ts.Acct.Default("acct")
-}

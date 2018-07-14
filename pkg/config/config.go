@@ -154,26 +154,3 @@ func NewConfigAcctServer() ConfigAcctServer {
 func (*ConfigAcctServer) MustUpdate() {
 
 }
-
-// 'config_test_server.go'
-
-const (
-	// const RequiredTitle is base of filename
-	// and Title of Toml file.
-	gRequiredTitle = "config_test_server"
-)
-
-// ConfigTestServer contains all config data to start program.
-type ConfigTestServer struct {
-	Title string
-}
-
-func NewConfigTestServer() ConfigTestServer {
-	var config ConfigTestServer
-
-	return config
-}
-
-func (*ConfigTestServer) MustUpdate() {
-
-}
