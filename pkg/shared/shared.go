@@ -17,17 +17,4 @@
 //
 // Overview
 //
-
 package shared
-
-// GameMaster interface for the GameServer.
-// List all RPC functions supported.
-//   Usage: server.Register(GameMaster)
-type GameMaster interface {
-}
-
-// AcctMaster interface for the AcctServer.
-// List all RPC functions supported.
-//   Usage: server.Register(AcctMaster)
-type AcctMaster interface {
-}
