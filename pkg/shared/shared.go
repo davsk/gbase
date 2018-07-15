@@ -1,35 +1,33 @@
 // /////////////////////////////////////////////////////////////
-// 'Connect_test.go'                                           /
+// 'shared.go'                                                 /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
 // that can be found in the LICENSE file.                      /
 //                                                             /
 // by David Skinner                                            /
-// on July 14, 2018                                            /
+// on July 15, 2018                                            /
 // for Davsk℠ Universe 4.0 project gbase                       /
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-package config
+// package shared defines RPC interface of GameMaster for the
+// Game Server and AcctMaster for the AcctServer for
+// Universe 4.0
+//
+// Overview
+//
 
-import (
-	"fmt"
-	"testing"
-)
+package shared
 
-func TestConnect_Default(t *testing.T) {
-	var game, acct, stuff Connect
-	game.Default("game")
-	acct.Default("acct")
-	stuff.Default("stuff")
-	fmt.Println(game)
-	fmt.Println(acct)
-	fmt.Println(stuff)
-	fmt.Println(stuff.ConnectionStr())
-	// Output:
-	// {localhost 5432 universe postgres password}
-	// {localhost 5432 business postgres password}
-	// {localhost 5432 stuff postgres password}
-	// host=localhost port=5432 database=stuff user=postgres password=password
+// GameMaster interface for the GameServer.
+// List all RPC functions supported.
+//   Usage: server.Register(GameMaster)
+type GameMaster interface {
+}
+
+// AcctMaster interface for the AcctServer.
+// List all RPC functions supported.
+//   Usage: server.Register(AcctMaster)
+type AcctMaster interface {
 }

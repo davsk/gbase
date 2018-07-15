@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'Connect_test.go'                                           /
+// 'AcctWebSvc'                                                /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -11,25 +11,9 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-package config
-
-import (
-	"fmt"
-	"testing"
-)
-
-func TestConnect_Default(t *testing.T) {
-	var game, acct, stuff Connect
-	game.Default("game")
-	acct.Default("acct")
-	stuff.Default("stuff")
-	fmt.Println(game)
-	fmt.Println(acct)
-	fmt.Println(stuff)
-	fmt.Println(stuff.ConnectionStr())
-	// Output:
-	// {localhost 5432 universe postgres password}
-	// {localhost 5432 business postgres password}
-	// {localhost 5432 stuff postgres password}
-	// host=localhost port=5432 database=stuff user=postgres password=password
-}
+// package AcctWebSvc starts a web service for the AcctServer for Universe 4.0.
+//
+// Overview
+//
+// TODO(dls)
+package AcctWebSvc

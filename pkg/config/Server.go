@@ -13,6 +13,12 @@
 
 package config
 
+import (
+	"log"
+	"net"
+	"strconv"
+)
+
 // Server base config interface to find server.
 // This type is to be embedded or used in a config struct.
 type Server struct {
@@ -21,19 +27,30 @@ type Server struct {
 }
 
 // Default Server receives choice string for host.
-func (s *Server) Default(choice string) {
+func (srv *Server) Default(choice string) {
 	// Default Host names
 	switch choice {
 	case "game":
-		s.Host = "davsk.sytes.net"
+		srv.Host = "davsk.sytes.net"
 		break
 	case "acct":
-		s.Host = "universe.gameserve.com"
+		srv.Host = "universe.gameserve.com"
 		break
 	default:
-		s.Host = choice
+		srv.Host = choice
 	}
 
 	// Default Ports
-	s.Ports.Default()
+	srv.Ports.Default()
+}
+
+// RpcConn returns a net.Conn to the RPC server.
+// TODO(ds) This may not work on Unix as Unix wants a file system path.
+func (srv *Server) RpcConn() net.Conn {
+	conn, err := net.Dial("tcp", srv.Host+":"+strconv.Itoa(int(srv.Rpc)))
+	if err != nil {
+		log.Fatal("Connectiong:", err)
+	}
+
+	return conn
 }
