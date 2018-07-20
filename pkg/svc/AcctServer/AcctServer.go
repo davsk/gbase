@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'con_client.go'                                             /
+// 'AcctServer.go'                                             /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -11,13 +11,39 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// cmd con_client receives input from the user,
-// communicates with the game server,
-// displays the results to the user.
-package main
+// package AcctServer starts an RPC microservice module
+// for the Universe 4.0 game.
+package AcctServer
 
-import "davsk.net/gbase/pkg/svc/conclient"
+import (
+	"database/sql"
+	"log"
 
-func main() {
-	conclient.MustStart()
+	"davsk.net/gbase/pkg/config"
+	_ "github.com/lib/pq"
+)
+
+func Start() error {
+	// Load config.
+	cfg := config.NewAcctServer()
+
+	// Open database.
+	db, err := sql.Open("postgres",
+		cfg.Acct.ConnectionStr())
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+
+	// handlers
+
+	// start
+
+	return nil
+}
+
+func MustStart() {
+	if err := Start(); err != nil {
+		log.Fatal(err)
+	}
 }
