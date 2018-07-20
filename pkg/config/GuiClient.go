@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'GuiClient.go'                                              /
+// 'guiclt.go'                                              /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -13,7 +13,7 @@
 
 package config
 
-import "davsk.net/gbase/pkg/toml_config"
+import "davsk.net/gbase/pkg/tomlcfg"
 
 const (
 	// const kGcTitle is base of filename
@@ -21,19 +21,19 @@ const (
 	kGcTitle = "config_gui_client"
 )
 
-// GuiClient contains all config data to start program.
+// guiclt contains all config data to start program.
 type GuiClient struct {
 	Title string
 	Owner
 	Game Server
 }
 
-// NewGuiClient creates GuiClient with saved or default values.
+// NewGuiClient creates guiclt with saved or default values.
 func NewGuiClient() GuiClient {
 	var gc GuiClient
 
 	// Load config from file.
-	if err := toml_config.Load(kGcTitle, &gc); err != nil {
+	if err := tomlcfg.Load(kGcTitle, &gc); err != nil {
 		// Save default config.
 		gc.Default()
 		gc.MustUpdate()
@@ -42,7 +42,7 @@ func NewGuiClient() GuiClient {
 	return gc
 }
 
-// Default GuiClient.
+// Default guiclt.
 func (gc *GuiClient) Default() {
 	gc.Title = kGcTitle
 	gc.Owner.Default()
@@ -51,5 +51,5 @@ func (gc *GuiClient) Default() {
 
 // MustUpdate saves config, panics on fail.
 func (gc *GuiClient) MustUpdate() {
-	toml_config.MustSave(kGcTitle, gc)
+	tomlcfg.MustSave(kGcTitle, gc)
 }

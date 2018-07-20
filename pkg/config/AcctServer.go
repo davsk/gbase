@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'AcctServer.go'                                             /
+// 'acctsvc.go'                                             /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -13,7 +13,7 @@
 
 package config
 
-import "davsk.net/gbase/pkg/toml_config"
+import "davsk.net/gbase/pkg/tomlcfg"
 
 const (
 	// const kAsTitle is base of filename
@@ -21,19 +21,19 @@ const (
 	kAsTitle = "config_acct_server"
 )
 
-// AcctServer config interface for WAN server.
+// acctsvc config interface for WAN server.
 type AcctServer struct {
 	Title string
 	Ports
 	Acct Connect
 }
 
-// NewAcctServer creates AcctServer with saved or default values.
+// NewAcctServer creates acctsvc with saved or default values.
 func NewAcctServer() AcctServer {
 	var as AcctServer
 
 	// Load config from file.
-	if err := toml_config.Load(kTsTitle, &as); err != nil {
+	if err := tomlcfg.Load(kTsTitle, &as); err != nil {
 		// Save default config.
 		as.Default()
 		as.MustUpdate()
@@ -42,7 +42,7 @@ func NewAcctServer() AcctServer {
 	return as
 }
 
-// Default AcctServer receives title string.
+// Default acctsvc receives title string.
 func (as *AcctServer) Default() {
 	as.Title = kAsTitle
 	as.Ports.Default()
@@ -51,5 +51,5 @@ func (as *AcctServer) Default() {
 
 // MustUpdate saves config, panics on fail.
 func (as *AcctServer) MustUpdate() {
-	toml_config.MustSave(kAsTitle, as)
+	tomlcfg.MustSave(kAsTitle, as)
 }

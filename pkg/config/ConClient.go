@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'ConClient.go'                                              /
+// 'conclt.go'                                              /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -13,7 +13,7 @@
 
 package config
 
-import "davsk.net/gbase/pkg/toml_config"
+import "davsk.net/gbase/pkg/tomlcfg"
 
 const (
 	// const kCcTitle is base of filename
@@ -33,7 +33,7 @@ func NewConClient() ConClient {
 	var cc ConClient
 
 	// Load config from file.
-	if err := toml_config.Load(kCcTitle, &cc); err != nil {
+	if err := tomlcfg.Load(kCcTitle, &cc); err != nil {
 		// Save default config.
 		cc.Default()
 		cc.MustUpdate()
@@ -51,5 +51,5 @@ func (cc *ConClient) Default() {
 
 // MustUpdate saves config, panics on fail.
 func (cc *ConClient) MustUpdate() {
-	toml_config.MustSave(kCcTitle, cc)
+	tomlcfg.MustSave(kCcTitle, cc)
 }

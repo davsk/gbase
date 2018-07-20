@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'nothing.go'                                                /
+// 'acctsvc.go'                                            /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -11,31 +11,38 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// Package nothing does nothing until you manually exit with
-// CTRL-C.
-//
-// TODO(ds) Any suggestions on how to test this?
-package nothing
+// package acctsvc starts an RPC microservice module
+// for the Universe 4.0 game.
+package acctsvc // import "davsk.net/gbase/pkg/acctsvc"
 
 import (
-	"os"
-	"os/signal"
-	"syscall"
+	"database/sql"
+	"log"
 
+	"davsk.net/gbase/pkg/config"
 	"davsk.net/gbase/pkg/must"
+	_ "github.com/lib/pq"
 )
 
-// Do nothing until you manually exit with CTRL-C.
-func Do() error {
-	// wait
-	c := make(chan os.Signal)
-	signal.Notify(c, os.Interrupt, syscall.SIGTERM)
-	<-c // This will block until you manually exit with CTRL-C
+func Start() error {
+	// Load config.
+	cfg := config.NewAcctServer()
+
+	// Open database.
+	db, err := sql.Open("postgres",
+		cfg.Acct.ConnectionStr())
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+
+	// handlers
+
+	// start
+
 	return nil
 }
 
-// MustDo nothing until you manually exit with CTRL-C,
-// panics on error.
-func MustDo() {
-	must.Do(Do())
+func MustStart() {
+	must.Do(Start())
 }

@@ -13,7 +13,7 @@
 
 package config
 
-import "davsk.net/gbase/pkg/toml_config"
+import "davsk.net/gbase/pkg/tomlcfg"
 
 const (
 	// const kTsTitle is base of filename
@@ -35,7 +35,7 @@ func NewTestServer() TestServer {
 	var ts TestServer
 
 	// Load config from file.
-	if err := toml_config.Load(kTsTitle, &ts); err != nil {
+	if err := tomlcfg.Load(kTsTitle, &ts); err != nil {
 		// Save default config.
 		ts.Default()
 		ts.MustUpdate()
@@ -57,5 +57,5 @@ func (ts *TestServer) Default() {
 
 // MustUpdate saves config, panics on fail.
 func (ts *TestServer) MustUpdate() {
-	toml_config.MustSave(kTsTitle, ts)
+	tomlcfg.MustSave(kTsTitle, ts)
 }

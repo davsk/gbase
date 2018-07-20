@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'WebClient.go'                                              /
+// 'webclt.go'                                              /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -13,7 +13,7 @@
 
 package config
 
-import "davsk.net/gbase/pkg/toml_config"
+import "davsk.net/gbase/pkg/tomlcfg"
 
 const (
 	// const kWcTitle is base of filename
@@ -28,12 +28,12 @@ type WebClient struct {
 	Game Server
 }
 
-// NewWebClient creates WebClient with saved or default values.
+// NewWebClient creates webclt with saved or default values.
 func NewWebClient() WebClient {
 	var wc WebClient
 
 	// Load config from file.
-	if err := toml_config.Load(kWcTitle, &wc); err != nil {
+	if err := tomlcfg.Load(kWcTitle, &wc); err != nil {
 		// Save default config.
 		wc.Default()
 		wc.MustUpdate()
@@ -42,7 +42,7 @@ func NewWebClient() WebClient {
 	return wc
 }
 
-// Default WebClient.
+// Default webclt.
 func (wc *WebClient) Default() {
 	wc.Title = kWcTitle
 	wc.Owner.Default()
@@ -51,5 +51,5 @@ func (wc *WebClient) Default() {
 
 // MustUpdate saves config, panics on fail.
 func (wc *WebClient) MustUpdate() {
-	toml_config.MustSave(kWcTitle, wc)
+	tomlcfg.MustSave(kWcTitle, wc)
 }

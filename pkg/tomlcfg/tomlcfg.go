@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'toml_config.go'                                            /
+// 'tomlcfg.go'                                                /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -11,15 +11,16 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// package toml_config provides helper functions
+// package tomlcfg provides helper functions
 // to load and save toml config files.
-package toml_config
+package tomlcfg
 
 import (
 	"log"
 	"os"
 
 	"davsk.net/gbase/pkg/custom_path"
+	"davsk.net/gbase/pkg/must"
 	"github.com/BurntSushi/toml"
 )
 
@@ -65,16 +66,12 @@ func Save(title string, v interface{}) error {
 // and builds file name path from title
 // and after attempting to fill interface panics on failure.
 func MustLoad(title string, v interface{}) {
-	if err := Load(title, v); err != nil {
-		panic(err)
-	}
+	must.Do(Load(title, v))
 }
 
 // Save receives required title string and struct interface
 // and builds file name path from title
 // and after attempting to save interface will panic on failure.
 func MustSave(title string, v interface{}) {
-	if err := Save(title, v); err != nil {
-		panic(err)
-	}
+	must.Do(Save(title, v))
 }

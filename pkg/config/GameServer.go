@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'GameServer.go'                                             /
+// 'gamesvc.go'                                             /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -13,7 +13,7 @@
 
 package config
 
-import "davsk.net/gbase/pkg/toml_config"
+import "davsk.net/gbase/pkg/tomlcfg"
 
 const (
 	// const kGsTitle is base of filename
@@ -21,7 +21,7 @@ const (
 	kGsTitle = "config_game_server"
 )
 
-// GameServer config interface for LAN  server.
+// gamesvc config interface for LAN  server.
 type GameServer struct {
 	Title string
 	Ports
@@ -29,12 +29,12 @@ type GameServer struct {
 	Game Connect
 }
 
-// NewGameServer creates GameServer with saved or default values.
+// NewGameServer creates gamesvc with saved or default values.
 func NewGameServer() GameServer {
 	var gs GameServer
 
 	// Load config from file.
-	if err := toml_config.Load(kGsTitle, &gs); err != nil {
+	if err := tomlcfg.Load(kGsTitle, &gs); err != nil {
 		// Save default config.
 		gs.Default()
 		gs.MustUpdate()
@@ -43,7 +43,7 @@ func NewGameServer() GameServer {
 	return gs
 }
 
-// Default GameServer
+// Default gamesvc
 func (gs *GameServer) Default() {
 	gs.Title = kGsTitle
 	gs.Ports.Default()
@@ -53,5 +53,5 @@ func (gs *GameServer) Default() {
 
 // MustUpdate saves config, panics on fail.
 func (gs *GameServer) MustUpdate() {
-	toml_config.MustSave(kGsTitle, gs)
+	tomlcfg.MustSave(kGsTitle, gs)
 }

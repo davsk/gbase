@@ -1,19 +1,26 @@
 // /////////////////////////////////////////////////////////////
-// 'AcctWebSvc'                                                /
+// 'gameserver.go'                                             /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
 // that can be found in the LICENSE file.                      /
 //                                                             /
 // by David Skinner                                            /
-// on July 14, 2018                                            /
+// on July 20, 2018                                            /
 // for Davsk℠ Universe 4.0 project gbase                       /
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// package AcctWebSvc starts a web service for the acctsvc for Universe 4.0.
-//
-// Overview
-//
-// TODO(dls)
-package AcctWebSvc
+// cmd gameserver is an http/rpc server
+// that accesses a game database and rpcs the acct_server.
+package main
+
+import (
+	"davsk.net/gbase/pkg/nothing"
+	"davsk.net/gbase/pkg/svc/gamesvc"
+)
+
+func main() {
+	gamesvc.MustStart()
+	nothing.MustDo()
+}

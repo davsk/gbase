@@ -11,7 +11,7 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// package config loads config data from file
+// Package config loads config data from file
 // or creates the file if it does not exist.
 //
 // Overview

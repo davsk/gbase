@@ -12,12 +12,12 @@
 // /////////////////////////////////////////////////////////////
 
 // package GameMaster defines RPC interface of GameMaster
-// for the GameServer for Universe 4.0.
+// for the gamesvc for Universe 4.0.
 package GameMaster
 
 import "davsk.net/gbase/pkg/shared"
 
-// GameMaster interface for the GameServer.
+// GameMaster interface for the gamesvc.
 // List all RPC functions supported.
 //   Usage: server.Register(GameMaster)
 type GameMaster interface {

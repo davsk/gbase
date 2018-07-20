@@ -11,7 +11,7 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// package must provides configured error response for
+// Package must provides configured error response for
 // functions that must complete without error.
 package must // import "davsk.net/gbase/pkg/must"
 

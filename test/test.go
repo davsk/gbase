@@ -12,7 +12,7 @@
 // on July 11, 2018
 // for Davsk℠ Universe 4.0 project gbase
 
-// cmd test runs game on local test server using logfiles from con_client.
+// cmd test runs game on local test server using logfiles from conclt.
 package main
 
 func main() {
