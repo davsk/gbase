@@ -17,10 +17,11 @@
 package nothing
 
 import (
-	"log"
 	"os"
 	"os/signal"
 	"syscall"
+
+	"davsk.net/gbase/pkg/must"
 )
 
 // Do nothing until you manually exit with CTRL-C.
@@ -35,7 +36,5 @@ func Do() error {
 // MustDo nothing until you manually exit with CTRL-C,
 // panics on error.
 func MustDo() {
-	if err := Do(); err != nil {
-		log.Fatal(err)
-	}
+	must.Do(Do())
 }

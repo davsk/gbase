@@ -13,13 +13,14 @@
 
 // package AcctServer starts an RPC microservice module
 // for the Universe 4.0 game.
-package AcctServer
+package AcctServer // import "davsk.net/gbase/pkg/AcctServer"
 
 import (
 	"database/sql"
 	"log"
 
 	"davsk.net/gbase/pkg/config"
+	"davsk.net/gbase/pkg/must"
 	_ "github.com/lib/pq"
 )
 
@@ -43,7 +44,5 @@ func Start() error {
 }
 
 func MustStart() {
-	if err := Start(); err != nil {
-		log.Fatal(err)
-	}
+	must.Do(Start())
 }
