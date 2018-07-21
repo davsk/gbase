@@ -18,4 +18,4 @@
 //
 // Modules may be run as discreet programs on different computers networked
 // together or may be combined to form a standalone game for one computer.
-package gbase
+package gbase // import "davsk.net/gbase"
