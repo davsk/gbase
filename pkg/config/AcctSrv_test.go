@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'ConClient_test.go'                                         /
+// 'AcctSrv_test.go'                                           /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -18,8 +18,9 @@ import (
 	"testing"
 )
 
-func TestConClient(t *testing.T) {
-	fmt.Println(NewConClient())
+func TestNewAcctServer(t *testing.T) {
+	as := NewAcctSrv()
+	fmt.Println(as)
 	// Output:
-	// {config_con_client {0 email} {davsk.sytes.net {80 433 5000}}}
+	// {config_acct_server {80 433 5000} {localhost 5432 business postgres password}}
 }

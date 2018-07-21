@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'web_client.go'                                             /
+// 'davsk_game_srv.go'                                         /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -11,17 +11,16 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// cmd web_client receives input from the user,
-// communicates with the game_server,
-// displays the results to the user.
+// cmd davsk_game_srv is an http/rpc server
+// that accesses a game database and rpcs the acct_srv.
 package main
 
 import (
 	"davsk.net/gbase/pkg/nothing"
-	"davsk.net/gbase/pkg/svc/webclient"
+	"davsk.net/gbase/pkg/svc/gameserver"
 )
 
 func main() {
-	webclient.MustStart()
+	gameserver.MustStart()
 	nothing.MustDo()
 }

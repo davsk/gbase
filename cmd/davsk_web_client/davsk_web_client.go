@@ -1,44 +1,27 @@
 // /////////////////////////////////////////////////////////////
-// 'acctserver.go'                                             /
+// 'davsk_web_client.go'                                       /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
 // that can be found in the LICENSE file.                      /
 //                                                             /
 // by David Skinner                                            /
-// on July 19, 2018                                            /
+// on July 20, 2018                                            /
 // for Davsk℠ Universe 4.0 project gbase                       /
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// package acctserver starts an RPC microservice module
-// for the Universe 4.0 game.
-package acctserver // import "davsk.net/gbase/pkg/svc/acctserver"
+// cmd davsk_web_client receives input from the user,
+// communicates with the davsk_game_srv,
+// displays the results to the user.
+package main
 
 import (
-	"log"
-
-	"davsk.net/gbase/pkg/config"
-	"davsk.net/gbase/pkg/must"
+	"davsk.net/gbase/pkg/nothing"
+	"davsk.net/gbase/pkg/svc/webclient"
 )
 
-func Start() error {
-	// Load config.
-	log.Println("Loading config file.")
-	cfg := config.NewAcctServer()
-
-	// Open database.
-	log.Println("Opening Acct Database.")
-	db := cfg.Acct.MustOpenDatabase()
-	defer db.Close()
-
-	// handlers
-
-	// start
-
-	return nil
-}
-
-func MustStart() {
-	must.Do(Start())
+func main() {
+	webclient.MustStart()
+	nothing.MustDo()
 }

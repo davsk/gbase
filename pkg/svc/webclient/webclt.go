@@ -17,12 +17,12 @@
 // Overview
 //
 // webclient can be used alone in main to create
-// a client application or it may be used with acctserver
+// a client application or it may be used with acctsrv
 // and gameserver to create a standalone executable.
 //
 // Note that services must be started in sequence.
-//    acct_server.MustStart()
-//    game_server.MustStart()
+//    acct_srv.MustStart()
+//    davsk_game_srv.MustStart()
 //    webclient.MustStart()
 //    nothing.Do()
 package webclient

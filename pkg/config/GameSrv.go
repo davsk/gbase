@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'conclient.go'                                              /
+// 'gameserver.go'                                             /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -16,40 +16,42 @@ package config
 import "davsk.net/gbase/pkg/tomlcfg"
 
 const (
-	// const kCcTitle is base of filename
+	// const kGsTitle is base of filename
 	// and Title of Toml file.
-	kCcTitle = "config_con_client"
+	kGsTitle = "config_game_server"
 )
 
-// ConClient contains all config data to start program.
-type ConClient struct {
+// gameserver config interface for LAN  server.
+type GameSrv struct {
 	Title string
-	Owner
-	Game Server
+	Ports
+	Acct Server
+	Game Connect
 }
 
-// NewConClient creates ConClient with saved or default values.
-func NewConClient() ConClient {
-	var cc ConClient
+// NewGameSrv creates gameserver with saved or default values.
+func NewGameSrv() GameSrv {
+	var gs GameSrv
 
 	// Load config from file.
-	if err := tomlcfg.Load(kCcTitle, &cc); err != nil {
+	if err := tomlcfg.Load(kGsTitle, &gs); err != nil {
 		// Save default config.
-		cc.Default()
-		cc.MustUpdate()
+		gs.Default()
+		gs.MustUpdate()
 	}
 
-	return cc
+	return gs
 }
 
-// Default ConClient.
-func (cc *ConClient) Default() {
-	cc.Title = kCcTitle
-	cc.Owner.Default()
-	cc.Game.Default("game")
+// Default gameserver
+func (gs *GameSrv) Default() {
+	gs.Title = kGsTitle
+	gs.Ports.Default()
+	gs.Acct.Default("acct")
+	gs.Game.Default("game")
 }
 
 // MustUpdate saves config, panics on fail.
-func (cc *ConClient) MustUpdate() {
-	tomlcfg.MustSave(kCcTitle, cc)
+func (gs *GameSrv) MustUpdate() {
+	tomlcfg.MustSave(kGsTitle, gs)
 }

@@ -17,11 +17,11 @@
 // Overview
 //
 // conclient can be used alone in main to create
-// a client application or it may be used with acctserver
+// a client application or it may be used with acctsrv
 // and gameserver to create a standalone executable.
 //
 // Note that services must be started in sequence.
-//    acctserver.MustStart()
+//    acctsrv.MustStart()
 //    gameserver.MustStart()
 //    conclient.MustStart()
 //    nothing.Do()
@@ -40,7 +40,7 @@ import (
 // or returns error on failure.
 func Start() error {
 	log.Println("Loading config file.")
-	cfg := config.NewConClient()
+	cfg := config.NewConsoleClient()
 	fmt.Println(cfg)
 
 	return nil

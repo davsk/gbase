@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'TestServer.go'                                            /
+// 'acctsrv.go'                                                /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -16,46 +16,40 @@ package config
 import "davsk.net/gbase/pkg/tomlcfg"
 
 const (
-	// const kTsTitle is base of filename
+	// const kAsTitle is base of filename
 	// and Title of Toml file.
-	kTsTitle = "config_test_server"
+	kAsTitle = "config_acct_srv"
 )
 
-// TestServer config interface for test server.
-type TestServer struct {
-	Title      string
-	GameServer Ports
-	AcctServer Ports
-	Game       Connect
-	Acct       Connect
+// acctsrv config interface for WAN server.
+type AcctSrv struct {
+	Title string
+	Ports
+	Acct Connect
 }
 
-// NewTestServer creates TestServer with saved or default values.
-func NewTestServer() TestServer {
-	var ts TestServer
+// NewAcctSrv creates acctsrv with saved or default values.
+func NewAcctSrv() AcctSrv {
+	var as AcctSrv
 
 	// Load config from file.
-	if err := tomlcfg.Load(kTsTitle, &ts); err != nil {
+	if err := tomlcfg.Load(kTsTitle, &as); err != nil {
 		// Save default config.
-		ts.Default()
-		ts.MustUpdate()
+		as.Default()
+		as.MustUpdate()
 	}
 
-	return ts
+	return as
 }
 
-// Default TestServer receives title string.
-func (ts *TestServer) Default() {
-	ts.Title = kTsTitle
-	ts.GameServer.Default()
-	ts.AcctServer.Http = 8000
-	ts.AcctServer.Https = 8080
-	ts.AcctServer.Rpc = 5001
-	ts.Game.Default("game")
-	ts.Acct.Default("acct")
+// Default acctsrv receives title string.
+func (as *AcctSrv) Default() {
+	as.Title = kAsTitle
+	as.Ports.Default()
+	as.Acct.Default("acct")
 }
 
 // MustUpdate saves config, panics on fail.
-func (ts *TestServer) MustUpdate() {
-	tomlcfg.MustSave(kTsTitle, ts)
+func (as *AcctSrv) MustUpdate() {
+	tomlcfg.MustSave(kAsTitle, as)
 }

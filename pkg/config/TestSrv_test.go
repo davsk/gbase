@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'AcctServer_test.go'                                        /
+// 'TestSrv_test.go'                                        /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -18,9 +18,9 @@ import (
 	"testing"
 )
 
-func TestNewAcctServer(t *testing.T) {
-	as := NewAcctServer()
-	fmt.Println(as)
+func TestNewTestServer(t *testing.T) {
+	ts := NewTestSrv()
+	fmt.Println(ts)
 	// Output:
-	// {config_acct_server {80 433 5000} {localhost 5432 business postgres password}}
+	// {config_test_server {80 433 5000} {8000 8080 5001} {localhost 5432 universe postgres password} {localhost 5432 business postgres password}}
 }

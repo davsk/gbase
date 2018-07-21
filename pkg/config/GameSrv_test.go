@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'acct_server.go'                                            /
+// 'GameSrv_test.go'                                        /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -11,19 +11,16 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// cmd acct_server is an http/https/rpc server
-// that accesses a database of accounts, users, and servers.
-package main
+package config
 
 import (
-	"davsk.net/gbase/pkg/nothing"
-	"davsk.net/gbase/pkg/svc/acctserver"
-	_ "github.com/lib/pq"
+	"fmt"
+	"testing"
 )
 
-const kVersion = "v0.1.0"
-
-func main() {
-	acctserver.MustStart()
-	nothing.MustDo()
+func TestNewGameServer(t *testing.T) {
+	gs := NewGameSrv()
+	fmt.Println(gs)
+	// Output:
+	// {config_game_server {80 433 5000} {universe.gameserve.com {80 433 5000}} {localhost 5432 universe postgres password}}
 }

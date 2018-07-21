@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'TestServer_test.go'                                        /
+// 'ConsoleClient_test.go'                                         /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -18,9 +18,8 @@ import (
 	"testing"
 )
 
-func TestNewTestServer(t *testing.T) {
-	ts := NewTestServer()
-	fmt.Println(ts)
+func TestConClient(t *testing.T) {
+	fmt.Println(NewConsoleClient())
 	// Output:
-	// {config_test_server {80 433 5000} {8000 8080 5001} {localhost 5432 universe postgres password} {localhost 5432 business postgres password}}
+	// {config_con_client {0 email} {davsk.sytes.net {80 433 5000}}}
 }

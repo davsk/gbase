@@ -27,7 +27,7 @@ import (
 func Start() error {
 	// Load config.
 	log.Println("Loading config file.")
-	cfg := config.NewGameServer()
+	cfg := config.NewGameSrv()
 
 	// Open database.
 	db := cfg.Game.MustOpenDatabase()

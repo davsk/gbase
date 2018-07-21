@@ -12,12 +12,12 @@
 // /////////////////////////////////////////////////////////////
 
 // package AcctMaster defines RPC interface of AcctMaster
-// for the acctserver for Universe 4.0.
+// for the acctsrv for Universe 4.0.
 package AcctMaster
 
 import "davsk.net/gbase/pkg/shared"
 
-// AcctMaster interface for the acctserver.
+// AcctMaster interface for the acctsrv.
 // List all RPC functions supported.
 //   Usage: server.Register(AcctMaster)
 type AcctMaster interface {

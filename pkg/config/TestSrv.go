@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'gameserver.go'                                             /
+// 'TestSrv.go'                                            /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -16,42 +16,46 @@ package config
 import "davsk.net/gbase/pkg/tomlcfg"
 
 const (
-	// const kGsTitle is base of filename
+	// const kTsTitle is base of filename
 	// and Title of Toml file.
-	kGsTitle = "config_game_server"
+	kTsTitle = "config_test_srv"
 )
 
-// gameserver config interface for LAN  server.
-type GameServer struct {
-	Title string
-	Ports
-	Acct Server
-	Game Connect
+// TestSrv config interface for test server.
+type TestSrv struct {
+	Title      string
+	GameServer Ports
+	AcctServer Ports
+	Game       Connect
+	Acct       Connect
 }
 
-// NewGameServer creates gameserver with saved or default values.
-func NewGameServer() GameServer {
-	var gs GameServer
+// NewTestSrv creates TestSrv with saved or default values.
+func NewTestSrv() TestSrv {
+	var ts TestSrv
 
 	// Load config from file.
-	if err := tomlcfg.Load(kGsTitle, &gs); err != nil {
+	if err := tomlcfg.Load(kTsTitle, &ts); err != nil {
 		// Save default config.
-		gs.Default()
-		gs.MustUpdate()
+		ts.Default()
+		ts.MustUpdate()
 	}
 
-	return gs
+	return ts
 }
 
-// Default gameserver
-func (gs *GameServer) Default() {
-	gs.Title = kGsTitle
-	gs.Ports.Default()
-	gs.Acct.Default("acct")
-	gs.Game.Default("game")
+// Default TestSrv receives title string.
+func (ts *TestSrv) Default() {
+	ts.Title = kTsTitle
+	ts.GameServer.Default()
+	ts.AcctServer.Http = 8000
+	ts.AcctServer.Https = 8080
+	ts.AcctServer.Rpc = 5001
+	ts.Game.Default("game")
+	ts.Acct.Default("acct")
 }
 
 // MustUpdate saves config, panics on fail.
-func (gs *GameServer) MustUpdate() {
-	tomlcfg.MustSave(kGsTitle, gs)
+func (ts *TestSrv) MustUpdate() {
+	tomlcfg.MustSave(kTsTitle, ts)
 }

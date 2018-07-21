@@ -18,9 +18,9 @@ package docs
 /*
 You have your choice of
     conclient
-    web_client
-    gui_client
-Which connect to a game_server that provides
+    davsk_web_client
+    davsk_gui_client
+Which connect to a davsk_game_srv that provides
     web server
     rpc server
 Which connects to

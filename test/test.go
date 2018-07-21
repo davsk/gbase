@@ -17,13 +17,13 @@ package main
 
 import (
 	"davsk.net/gbase/pkg/nothing"
-	"davsk.net/gbase/pkg/svc/acctserver"
+	"davsk.net/gbase/pkg/svc/acctsrv"
 	"davsk.net/gbase/pkg/svc/conclient"
 	"davsk.net/gbase/pkg/svc/gameserver"
 )
 
 func main() {
-	acctserver.MustStart()
+	acctsrv.MustStart()
 	gameserver.MustStart()
 	conclient.MustStart()
 	nothing.Do()

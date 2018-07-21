@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'acctserver.go'                                             /
+// 'conclient.go'                                              /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -16,40 +16,40 @@ package config
 import "davsk.net/gbase/pkg/tomlcfg"
 
 const (
-	// const kAsTitle is base of filename
+	// const kCcTitle is base of filename
 	// and Title of Toml file.
-	kAsTitle = "config_acct_server"
+	kCcTitle = "config_console_client"
 )
 
-// acctserver config interface for WAN server.
-type AcctServer struct {
+// ConsoleClient contains all config data to start program.
+type ConsoleClient struct {
 	Title string
-	Ports
-	Acct Connect
+	Owner
+	Game Server
 }
 
-// NewAcctServer creates acctserver with saved or default values.
-func NewAcctServer() AcctServer {
-	var as AcctServer
+// NewConsoleClient creates ConsoleClient with saved or default values.
+func NewConsoleClient() ConsoleClient {
+	var cc ConsoleClient
 
 	// Load config from file.
-	if err := tomlcfg.Load(kTsTitle, &as); err != nil {
+	if err := tomlcfg.Load(kCcTitle, &cc); err != nil {
 		// Save default config.
-		as.Default()
-		as.MustUpdate()
+		cc.Default()
+		cc.MustUpdate()
 	}
 
-	return as
+	return cc
 }
 
-// Default acctserver receives title string.
-func (as *AcctServer) Default() {
-	as.Title = kAsTitle
-	as.Ports.Default()
-	as.Acct.Default("acct")
+// Default ConsoleClient.
+func (cc *ConsoleClient) Default() {
+	cc.Title = kCcTitle
+	cc.Owner.Default()
+	cc.Game.Default("game")
 }
 
 // MustUpdate saves config, panics on fail.
-func (as *AcctServer) MustUpdate() {
-	tomlcfg.MustSave(kAsTitle, as)
+func (cc *ConsoleClient) MustUpdate() {
+	tomlcfg.MustSave(kCcTitle, cc)
 }

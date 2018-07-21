@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'GameServer_test.go'                                        /
+// 'acct_srv.go'                                               /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -11,16 +11,19 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-package config
+// cmd acct_srv is an http/https/rpc server
+// that accesses a database of accounts, users, and servers.
+package main
 
 import (
-	"fmt"
-	"testing"
+	"davsk.net/gbase/pkg/nothing"
+	"davsk.net/gbase/pkg/svc/acctsrv"
+	_ "github.com/lib/pq"
 )
 
-func TestNewGameServer(t *testing.T) {
-	gs := NewGameServer()
-	fmt.Println(gs)
-	// Output:
-	// {config_game_server {80 433 5000} {universe.gameserve.com {80 433 5000}} {localhost 5432 universe postgres password}}
+// const kVersion = "v0.1.0"
+
+func main() {
+	acctsrv.MustStart()
+	nothing.MustDo()
 }

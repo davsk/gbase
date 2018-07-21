@@ -21,7 +21,7 @@ const (
 	kWcTitle = "config_web_client"
 )
 
-// ConClient contains all config data to start program.
+// ConsoleClient contains all config data to start program.
 type WebClient struct {
 	Title string
 	Owner
