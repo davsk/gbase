@@ -18,6 +18,7 @@
 package nothing
 
 import (
+	"log"
 	"os"
 	"os/signal"
 	"syscall"
@@ -27,6 +28,9 @@ import (
 
 // Do nothing until you manually exit with CTRL-C.
 func Do() error {
+	log.Println("Waiting for you to manually exit with CTRL-C or Stop Process" +
+		" with Ctrl-F2 in GoLand.")
+
 	// wait
 	c := make(chan os.Signal)
 	signal.Notify(c, os.Interrupt, syscall.SIGTERM)

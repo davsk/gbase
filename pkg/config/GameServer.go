@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'gamesvc.go'                                             /
+// 'gameserver.go'                                             /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -21,7 +21,7 @@ const (
 	kGsTitle = "config_game_server"
 )
 
-// gamesvc config interface for LAN  server.
+// gameserver config interface for LAN  server.
 type GameServer struct {
 	Title string
 	Ports
@@ -29,7 +29,7 @@ type GameServer struct {
 	Game Connect
 }
 
-// NewGameServer creates gamesvc with saved or default values.
+// NewGameServer creates gameserver with saved or default values.
 func NewGameServer() GameServer {
 	var gs GameServer
 
@@ -43,7 +43,7 @@ func NewGameServer() GameServer {
 	return gs
 }
 
-// Default gamesvc
+// Default gameserver
 func (gs *GameServer) Default() {
 	gs.Title = kGsTitle
 	gs.Ports.Default()

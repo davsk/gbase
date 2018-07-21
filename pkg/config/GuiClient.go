@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'guiclt.go'                                              /
+// 'guiclient.go'                                              /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -21,14 +21,14 @@ const (
 	kGcTitle = "config_gui_client"
 )
 
-// guiclt contains all config data to start program.
+// guiclient contains all config data to start program.
 type GuiClient struct {
 	Title string
 	Owner
 	Game Server
 }
 
-// NewGuiClient creates guiclt with saved or default values.
+// NewGuiClient creates guiclient with saved or default values.
 func NewGuiClient() GuiClient {
 	var gc GuiClient
 
@@ -42,7 +42,7 @@ func NewGuiClient() GuiClient {
 	return gc
 }
 
-// Default guiclt.
+// Default guiclient.
 func (gc *GuiClient) Default() {
 	gc.Title = kGcTitle
 	gc.Owner.Default()

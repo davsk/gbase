@@ -17,10 +17,10 @@ package docs
 
 /*
 You have your choice of
-    conclt
-    webclient
-    guiclient
-Which connect to a gameserver that provides
+    conclient
+    web_client
+    gui_client
+Which connect to a game_server that provides
     web server
     rpc server
 Which connects to
@@ -34,7 +34,7 @@ My test_server is
     connects to postgresql with universe & business database
 Configuration options are to be in toml files for each app with defaults if file is not found then it creates one.
 
-My test_client is like the conclt but runs off the event log from conclt so that you can play the same game over and over for testing.
+My test_client is like the conclient but runs off the event log from conclient so that you can play the same game over and over for testing.
 
 
 */

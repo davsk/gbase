@@ -12,7 +12,7 @@
 // /////////////////////////////////////////////////////////////
 
 // package shared defines RPC interface of GameMaster for the
-// Game Server and AcctMaster for the acctsvc for
+// Game Server and AcctMaster for the acctserver for
 // Universe 4.0
 //
 // Overview

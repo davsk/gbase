@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'guiclt.go'                                                 /
+// 'guiclient.go'                                                 /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -11,33 +11,33 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// Package guiclt is a console client application
+// Package guiclient is a console client application
 // for Universe 4.0 game.
 //
 // Overview
 //
-// guiclt can be used alone in main to create
-// a client application or it may be used with acctsvc
-// and gamesvc to create a standalone executable.
+// guiclient can be used alone in main to create
+// a client application or it may be used with acctserver
+// and gameserver to create a standalone executable.
 //
 // Note that services must be started in sequence.
-//    acctserver.MustStart()
-//    gameserver.MustStart()
-//    guiclt.MustStart()
+//    acct_server.MustStart()
+//    game_server.MustStart()
+//    guiclient.MustStart()
 //    nothing.Do()
-package guiclt
+package guiclient
 
 import (
 	"davsk.net/gbase/pkg/must"
 )
 
-// Start starts the guiclt service returns nil when ready
+// Start starts the guiclient service returns nil when ready
 // or returns error on failure.
 func Start() error {
 	return nil
 }
 
-// MustStart starts the guiclt service returns when ready
+// MustStart starts the guiclient service returns when ready
 // and panics on failure.
 func MustStart() {
 	must.Do(Start())

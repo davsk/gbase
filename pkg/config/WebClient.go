@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'webclt.go'                                              /
+// 'webclient.go'                                              /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -28,7 +28,7 @@ type WebClient struct {
 	Game Server
 }
 
-// NewWebClient creates webclt with saved or default values.
+// NewWebClient creates webclient with saved or default values.
 func NewWebClient() WebClient {
 	var wc WebClient
 
@@ -42,7 +42,7 @@ func NewWebClient() WebClient {
 	return wc
 }
 
-// Default webclt.
+// Default webclient.
 func (wc *WebClient) Default() {
 	wc.Title = kWcTitle
 	wc.Owner.Default()

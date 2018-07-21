@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'acctsvc.go'                                             /
+// 'acctserver.go'                                             /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -21,14 +21,14 @@ const (
 	kAsTitle = "config_acct_server"
 )
 
-// acctsvc config interface for WAN server.
+// acctserver config interface for WAN server.
 type AcctServer struct {
 	Title string
 	Ports
 	Acct Connect
 }
 
-// NewAcctServer creates acctsvc with saved or default values.
+// NewAcctServer creates acctserver with saved or default values.
 func NewAcctServer() AcctServer {
 	var as AcctServer
 
@@ -42,7 +42,7 @@ func NewAcctServer() AcctServer {
 	return as
 }
 
-// Default acctsvc receives title string.
+// Default acctserver receives title string.
 func (as *AcctServer) Default() {
 	as.Title = kAsTitle
 	as.Ports.Default()

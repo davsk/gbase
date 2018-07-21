@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'webclient.go'                                              /
+// 'gameserver_test.go'                                        /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -11,17 +11,10 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// cmd webclient receives input from the user,
-// communicates with the game server,
-// displays the results to the user.
-package main
+package gameserver
 
-import (
-	"davsk.net/gbase/pkg/nothing"
-	"davsk.net/gbase/pkg/svc/webclt"
-)
+import "testing"
 
-func main() {
-	webclt.MustStart()
-	nothing.MustDo()
+func TestMustStart(t *testing.T) {
+	MustStart()
 }

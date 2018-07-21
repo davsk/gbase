@@ -13,7 +13,13 @@
 
 package config
 
-import "strconv"
+import (
+	"database/sql"
+	"strconv"
+
+	"davsk.net/gbase/pkg/must"
+	_ "github.com/lib/pq"
+)
 
 // Connect base config interface to connect.
 // This type is to be embedded or used in a config struct.
@@ -46,6 +52,26 @@ func (cn *Connect) ConnectionStr() string {
 	}
 
 	return cns
+}
+
+// OpenDatabase returns pointer to pointer to an sql.DB
+// and error.
+func (cn *Connect) OpenDatabase() (*sql.DB, error) {
+	return sql.Open("postgres",
+		cn.ConnectionStr())
+}
+
+// MustOpenDatabase returns pointer to an sql.DB,
+// panics on fail.
+//
+// Usage:
+//    db := cn.MustOpenDatabase()
+//    defer db.close()
+func (cn *Connect) MustOpenDatabase() *sql.DB {
+	db, err := cn.OpenDatabase()
+	must.Do(err)
+
+	return db
 }
 
 // Default Connect receives choice of databases.

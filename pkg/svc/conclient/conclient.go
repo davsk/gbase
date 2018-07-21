@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'conclt.go'                                                 /
+// 'conclient.go'                                              /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -11,35 +11,43 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// Package conclt is a console client service
+// Package conclient is a console client service
 // for Universe 4.0 game.
 //
 // Overview
 //
-// conclt can be used alone in main to create
-// a client application or it may be used with acctsvc
-// and gamesvc to create a standalone executable.
+// conclient can be used alone in main to create
+// a client application or it may be used with acctserver
+// and gameserver to create a standalone executable.
 //
 // Note that services must be started in sequence.
 //    acctserver.MustStart()
 //    gameserver.MustStart()
-//    conclt.MustStart()
+//    conclient.MustStart()
 //    nothing.Do()
-package conclt
+package conclient
 
-import "log"
+import (
+	"fmt"
+	"log"
 
-// Start starts the conclt service,
+	"davsk.net/gbase/pkg/config"
+	"davsk.net/gbase/pkg/must"
+)
+
+// Start starts the conclient service,
 // returns nil when ready
 // or returns error on failure.
 func Start() error {
+	log.Println("Loading config file.")
+	cfg := config.NewConClient()
+	fmt.Println(cfg)
+
 	return nil
 }
 
-// MustStart starts the ConClient returns when ready
+// MustStart starts the conclient service, returns when ready
 // and panics on failure.
 func MustStart() {
-	if err := Start(); err != nil {
-		log.Fatal(err)
-	}
+	must.Do(Start())
 }

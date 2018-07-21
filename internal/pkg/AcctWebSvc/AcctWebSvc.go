@@ -11,7 +11,7 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// package AcctWebSvc starts a web service for the acctsvc for Universe 4.0.
+// package AcctWebSvc starts a web service for the acctserver for Universe 4.0.
 //
 // Overview
 //

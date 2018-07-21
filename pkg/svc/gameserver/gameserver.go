@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'webclt.go'                                                 /
+// 'gameserver.go'                                             /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -11,33 +11,36 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// Package webclt is a console client application
-// for Universe 4.0 game.
-//
-// Overview
-//
-// webclt can be used alone in main to create
-// a client application or it may be used with acctsvc
-// and gamesvc to create a standalone executable.
-//
-// Note that services must be started in sequence.
-//    acctserver.MustStart()
-//    gameserver.MustStart()
-//    webclt.MustStart()
-//    nothing.Do()
-package webclt
+// Package gameserver starts an RPC microservice module
+// for the Universe 4.0 game.
+package gameserver // import "davsk.net/gbase/pkg/svc/gameserver"
 
 import (
+	"log"
+
+	"davsk.net/gbase/pkg/config"
 	"davsk.net/gbase/pkg/must"
 )
 
-// Start starts the webclt service returns nil when ready
+// Start starts the gameserver service returns nil when ready
 // or returns error on failure.
 func Start() error {
+	// Load config.
+	log.Println("Loading config file.")
+	cfg := config.NewGameServer()
+
+	// Open database.
+	db := cfg.Game.MustOpenDatabase()
+	defer db.Close()
+
+	// handlers
+
+	// start
+
 	return nil
 }
 
-// MustStart starts the webclt service returns when ready
+// MustStart starts the gameserver service returns when ready
 // and panics on failure.
 func MustStart() {
 	must.Do(Start())
