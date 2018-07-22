@@ -18,12 +18,15 @@ package main
 import (
 	"davsk.net/gbase/pkg/nothing"
 	"davsk.net/gbase/pkg/svc/acctsrv"
+	"github.com/goinggo/tracelog"
 	_ "github.com/lib/pq"
 )
 
 // const kVersion = "v0.1.0"
 
 func main() {
+	tracelog.Start(tracelog.LevelTrace)
 	acctsrv.MustStart()
 	nothing.MustDo()
+	tracelog.Stop()
 }

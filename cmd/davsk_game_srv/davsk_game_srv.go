@@ -18,9 +18,12 @@ package main
 import (
 	"davsk.net/gbase/pkg/nothing"
 	"davsk.net/gbase/pkg/svc/gameserver"
+	"github.com/goinggo/tracelog"
 )
 
 func main() {
+	tracelog.Start(tracelog.LevelTrace)
 	gameserver.MustStart()
 	nothing.MustDo()
+	tracelog.Stop()
 }

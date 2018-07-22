@@ -18,10 +18,13 @@ package main
 
 import (
 	"davsk.net/gbase/pkg/nothing"
-	"davsk.net/gbase/pkg/svc/conclient"
+	"davsk.net/gbase/pkg/svc/consoleclient"
+	"github.com/goinggo/tracelog"
 )
 
 func main() {
-	conclient.MustStart()
+	tracelog.Start(tracelog.LevelTrace)
+	consoleclient.MustStart()
 	nothing.MustDo()
+	tracelog.Stop()
 }

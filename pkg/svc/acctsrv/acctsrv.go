@@ -16,25 +16,35 @@
 package acctsrv // import "davsk.net/gbase/pkg/svc/acctsrv"
 
 import (
-	"log"
-
 	"davsk.net/gbase/pkg/config"
 	"davsk.net/gbase/pkg/must"
+	"github.com/goinggo/tracelog"
 )
 
+const traceTitle = "acctsrv"
+
 func Start() error {
+	// const FunctionName for tracelog.
+	const traceFunctionName = "Start"
+	tracelog.Started(traceTitle, traceFunctionName)
+
 	// Load config.
-	log.Println("Loading config file.")
 	cfg := config.NewAcctSrv()
+	tracelog.Info(traceTitle, traceFunctionName,
+		"AcctSrv := %v", cfg)
 
 	// Open database.
-	log.Println("Opening Acct Database.")
 	db := cfg.Acct.MustOpenDatabase()
 	defer db.Close()
+	tracelog.Info(traceTitle, traceFunctionName,
+		"AcctDatabase := %v", db)
 
 	// handlers
 
 	// start
+
+	// Completed successfully.
+	tracelog.Completed(traceTitle, traceFunctionName)
 
 	return nil
 }

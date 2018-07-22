@@ -16,26 +16,37 @@
 package gameserver // import "davsk.net/gbase/pkg/svc/gameserver"
 
 import (
-	"log"
-
 	"davsk.net/gbase/pkg/config"
 	"davsk.net/gbase/pkg/must"
+	"github.com/goinggo/tracelog"
 )
+
+// const Title for tracelog
+const traceTitle = "gameserver"
 
 // Start starts the gameserver service returns nil when ready
 // or returns error on failure.
 func Start() error {
-	// Load config.
-	log.Println("Loading config file.")
+	// const FunctionName for tracelog
+	const traceFunctionName = "Start"
+	tracelog.Started(traceTitle, traceFunctionName)
+
 	cfg := config.NewGameSrv()
+	tracelog.Info(traceTitle, traceFunctionName,
+		"GameSrv := %v", cfg)
 
 	// Open database.
 	db := cfg.Game.MustOpenDatabase()
 	defer db.Close()
+	tracelog.Info(traceTitle, traceFunctionName,
+		"GameDatabase := %v", db)
 
 	// handlers
 
 	// start
+
+	// Completed successfully.
+	tracelog.Completed(traceTitle, traceFunctionName)
 
 	return nil
 }

@@ -19,9 +19,12 @@ package main
 import (
 	"davsk.net/gbase/pkg/nothing"
 	"davsk.net/gbase/pkg/svc/guiclient"
+	"github.com/goinggo/tracelog"
 )
 
 func main() {
+	tracelog.Start(tracelog.LevelTrace)
 	guiclient.MustStart()
 	nothing.MustDo()
+	tracelog.Stop()
 }

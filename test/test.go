@@ -12,19 +12,22 @@
 // /////////////////////////////////////////////////////////////
 
 // cmd test runs game on local test server
-// using logfiles from conclient.
+// using logfiles from consoleclient.
 package main
 
 import (
 	"davsk.net/gbase/pkg/nothing"
 	"davsk.net/gbase/pkg/svc/acctsrv"
-	"davsk.net/gbase/pkg/svc/conclient"
+	"davsk.net/gbase/pkg/svc/consoleclient"
 	"davsk.net/gbase/pkg/svc/gameserver"
+	"github.com/goinggo/tracelog"
 )
 
 func main() {
+	tracelog.Start(tracelog.LevelTrace)
 	acctsrv.MustStart()
 	gameserver.MustStart()
-	conclient.MustStart()
+	consoleclient.MustStart()
 	nothing.Do()
+	tracelog.Stop()
 }

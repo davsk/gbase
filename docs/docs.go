@@ -17,7 +17,7 @@ package docs
 
 /*
 You have your choice of
-    conclient
+    consoleclient
     davsk_web_client
     davsk_gui_client
 Which connect to a davsk_game_srv that provides
@@ -34,7 +34,7 @@ My test_server is
     connects to postgresql with universe & business database
 Configuration options are to be in toml files for each app with defaults if file is not found then it creates one.
 
-My test_client is like the conclient but runs off the event log from conclient so that you can play the same game over and over for testing.
+My test_client is like the consoleclient but runs off the event log from consoleclient so that you can play the same game over and over for testing.
 
 
 */
