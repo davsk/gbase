@@ -21,7 +21,7 @@ const (
 	kAsTitle = "config_acct_srv"
 )
 
-// acctsrv config interface for WAN server.
+// AcctSrv is the config interface for WAN server.
 type AcctSrv struct {
 	Title string
 	Ports
@@ -42,7 +42,7 @@ func NewAcctSrv() AcctSrv {
 	return as
 }
 
-// Default acctsrv receives title string.
+// Default AcctSrv receives title string.
 func (as *AcctSrv) Default() {
 	as.Title = kAsTitle
 	as.Ports.Default()
