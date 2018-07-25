@@ -16,6 +16,8 @@
 package acctsrv // import "davsk.net/gbase/pkg/svc/acctsrv"
 
 import (
+	"net/http"
+
 	"davsk.net/gbase/pkg/config"
 	"davsk.net/gbase/pkg/must"
 	"github.com/goinggo/tracelog"
@@ -40,6 +42,10 @@ func Start() error {
 		"AcctDatabase := %v", db)
 
 	// handlers
+	// serve index (and anything else) as https
+	mux := http.NewServeMux()
+	// mux.HandleFunc("/", index)
+	http.ListenAndServeTLS(":443", "cert.pem", "key.pem", mux)
 
 	// start
 
