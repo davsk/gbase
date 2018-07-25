@@ -11,7 +11,7 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// cmd davsk_web_client receives input from the user,
+// Command davsk_web_client receives input from the user,
 // communicates with the davsk_game_srv,
 // displays the results to the user.
 package main

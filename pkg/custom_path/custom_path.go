@@ -11,7 +11,7 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// package custom_path sets the working directory to the
+// Package custom_path sets the working directory to the
 // directory containing the program and returns an optional
 // custom path defined on the command line.
 //

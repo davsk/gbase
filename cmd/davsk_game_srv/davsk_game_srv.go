@@ -11,7 +11,7 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// cmd davsk_game_srv is an http/rpc server
+// Command davsk_game_srv is an http/rpc server
 // that accesses a game database and rpcs the acct_srv.
 package main
 

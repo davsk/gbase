@@ -11,7 +11,7 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// package tomlcfg provides helper functions
+// Package tomlcfg provides helper functions
 // to load and save toml config files.
 package tomlcfg
 

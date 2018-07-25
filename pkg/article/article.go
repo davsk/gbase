@@ -1,6 +1,6 @@
 // article.go
 
-// package article defines the structure of the article
+// Package article defines the structure of the article
 // and the related reporter that creates the article
 // and publisher that outputs the article
 package article

@@ -11,7 +11,7 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// cmd test runs game on local test server
+// Command test runs game on local test server
 // using logfiles from consoleclient.
 package main
 

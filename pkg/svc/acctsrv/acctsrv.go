@@ -11,7 +11,7 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// package acctsrv starts an RPC microservice module
+// Package acctsrv starts an RPC microservice module
 // for the Universe 4.0 game.
 package acctsrv // import "davsk.net/gbase/pkg/svc/acctsrv"
 

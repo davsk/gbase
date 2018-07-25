@@ -11,7 +11,7 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// package GameMaster/Client implements RPC Client GameMaster
+// Package GameMaster/Client implements RPC Client GameMaster
 // interface for use by Clients in Universe 4.0.
 package Client
 

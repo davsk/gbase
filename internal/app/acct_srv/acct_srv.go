@@ -11,7 +11,7 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// cmd acct_srv is an http/https/rpc server
+// Command acct_srv is an http/https/rpc server
 // that accesses a database of accounts, users, and servers.
 package main
 

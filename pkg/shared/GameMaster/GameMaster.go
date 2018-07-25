@@ -11,7 +11,7 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// package GameMaster defines RPC interface of GameMaster
+// Package GameMaster defines RPC interface of GameMaster
 // for the gameserver for Universe 4.0.
 package GameMaster
 

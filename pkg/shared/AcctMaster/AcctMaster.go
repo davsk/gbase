@@ -11,7 +11,7 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// package AcctMaster defines RPC interface of AcctMaster
+// Package AcctMaster defines RPC interface of AcctMaster
 // for the acctsrv for Universe 4.0.
 package AcctMaster
 

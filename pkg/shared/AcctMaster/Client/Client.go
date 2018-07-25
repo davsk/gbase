@@ -11,7 +11,7 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// package AcctMaster/Client implements RPC Client AcctMaster
+// Package AcctMaster/Client implements RPC Client AcctMaster
 // interface for use by gameserver in Universe 4.0.
 package Client
 

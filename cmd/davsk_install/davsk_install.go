@@ -11,7 +11,7 @@
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-//  cmd davsk_install
+//  Command davsk_install
 package main
 
 import (
