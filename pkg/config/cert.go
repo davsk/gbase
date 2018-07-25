@@ -28,6 +28,8 @@ import (
 	"os"
 	"strings"
 	"time"
+
+	"github.com/goinggo/tracelog"
 )
 
 type cert struct {
@@ -43,19 +45,33 @@ func (ct *cert) Default(name string) {
 }
 
 func (ct *cert) Validate() {
+	// const FunctionName for tracelog.
+	const traceFunctionName = "Cert.Validate"
+	tracelog.Started(traceTitle, traceFunctionName)
+
 	_ = ct
 
 	if _, err := os.Stat(ct.CertFile); os.IsExist(err) {
 		if _, err := os.Stat(ct.KeyFile); os.IsExist(err) {
 			// TODO(dls) check cert date for expiration.
+			// Completed successfully.
+			tracelog.Completed(traceTitle, traceFunctionName)
+
 			return
 		}
 	}
 
 	ct.Generate()
+
+	// Completed successfully.
+	tracelog.Completed(traceTitle, traceFunctionName)
 }
 
 func (ct *cert) Generate() (err error) {
+	// const FunctionName for tracelog.
+	const traceFunctionName = "Cert.Generate"
+	tracelog.Started(traceTitle, traceFunctionName)
+
 	var priv interface{}
 
 	// Generate Key
@@ -63,18 +79,25 @@ func (ct *cert) Generate() (err error) {
 	if err != nil {
 		return err
 	}
+	tracelog.Info(traceTitle, traceFunctionName,
+		"Private Key := %v", priv)
 
 	// Temporal calculations
 	notBefore := time.Now()
 	validFor := 365 * 24 * time.Hour
 	notAfter := notBefore.Add(validFor)
+	tracelog.Info(traceTitle, traceFunctionName,
+		"notAfter := %v", notAfter)
 
 	// Big Random Number
 	serialNumberLimit := new(big.Int).Lsh(big.NewInt(1), 128)
 	serialNumber, err := rand.Int(rand.Reader, serialNumberLimit)
 	if err != nil {
-		log.Fatalf("failed to generate serial number: %s", err)
+		tracelog.CompletedError(err, traceTitle, traceFunctionName)
+		return err
 	}
+	tracelog.Info(traceTitle, traceFunctionName,
+		"serialNumber := %v", serialNumber)
 
 	// Template for Certificate
 	template := x509.Certificate{
@@ -106,19 +129,22 @@ func (ct *cert) Generate() (err error) {
 		template.KeyUsage |= x509.KeyUsageCertSign
 	}
 
+	// Create certificate
 	derBytes, err := x509.CreateCertificate(rand.Reader, &template, &template, publicKey(priv), priv)
 	if err != nil {
-		log.Fatalf("Failed to create certificate: %s", err)
+		return err
 	}
 
 	certOut, err := os.Create(ct.CertFile)
 	if err != nil {
-		log.Fatalf("failed to open cert.pem for writing: %s", err)
+		return err
 	}
 	pem.Encode(certOut, &pem.Block{Type: "CERTIFICATE", Bytes: derBytes})
 	certOut.Close()
-	log.Print("written cert.pem\n")
+	tracelog.Info(traceTitle, traceFunctionName,
+		"CertFile := %v written.", ct.CertFile)
 
+	// Create Key File
 	keyOut, err := os.OpenFile(ct.KeyFile, os.O_WRONLY|os.O_CREATE|os.
 		O_TRUNC, 0600)
 	if err != nil {
@@ -127,7 +153,8 @@ func (ct *cert) Generate() (err error) {
 	}
 	pem.Encode(keyOut, pemBlockForKey(priv))
 	keyOut.Close()
-	log.Print("written key.pem\n")
+	tracelog.Info(traceTitle, traceFunctionName,
+		"KeyFile := %v wriiten.", ct.KeyFile)
 
 	return nil
 }

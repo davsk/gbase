@@ -25,3 +25,5 @@
 // If you make any changes in the config within the program,
 // you must then use the MustUpdate method.
 package config
+
+const traceTitle = "acctsrv"
