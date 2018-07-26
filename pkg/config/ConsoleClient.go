@@ -25,6 +25,7 @@ const (
 type ConsoleClient struct {
 	Title string
 	Owner
+	Service
 	Game Server
 }
 
@@ -46,6 +47,9 @@ func NewConsoleClient() ConsoleClient {
 func (cc *ConsoleClient) Default() {
 	cc.Title = kCcTitle
 	cc.Owner.Default()
+	cc.Service.Default("localhost, 127.0.0.1")
+	cc.Http = 0
+	cc.Rpc = 0
 	cc.Game.Default("game")
 }
 

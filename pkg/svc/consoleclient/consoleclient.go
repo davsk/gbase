@@ -28,7 +28,10 @@
 package consoleclient
 
 import (
+	"net/http"
+
 	"davsk.net/gbase/pkg/config"
+	"davsk.net/gbase/pkg/handler"
 	"davsk.net/gbase/pkg/must"
 	"github.com/goinggo/tracelog"
 )
@@ -52,6 +55,17 @@ func Start() error {
 	// Completed successfully.
 	tracelog.Completed(traceTitle, traceFunctionName)
 
+	// handlers
+	// serve index (and anything else) as https.
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", handler.Index)
+
+	// start
+	cfg.Start(mux)
+
+	// go console.Start()
+
+	// return status
 	return nil
 }
 
