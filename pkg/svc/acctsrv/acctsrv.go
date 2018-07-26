@@ -19,6 +19,7 @@ import (
 	"net/http"
 
 	"davsk.net/gbase/pkg/config"
+	"davsk.net/gbase/pkg/handler"
 	"davsk.net/gbase/pkg/must"
 	"github.com/goinggo/tracelog"
 )
@@ -42,12 +43,12 @@ func Start() error {
 		"AcctDatabase := %v", db)
 
 	// handlers
-	// serve index (and anything else) as https
+	// serve index (and anything else) as https.
 	mux := http.NewServeMux()
-	// mux.HandleFunc("/", index)
-	http.ListenAndServeTLS(":443", "cert.pem", "key.pem", mux)
+	mux.HandleFunc("/", handler.Index)
 
 	// start
+	cfg.Start(mux)
 
 	// Completed successfully.
 	tracelog.Completed(traceTitle, traceFunctionName)

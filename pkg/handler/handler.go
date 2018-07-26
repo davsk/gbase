@@ -1,30 +1,31 @@
 // /////////////////////////////////////////////////////////////
-// 'config.go'                                                 /
+// 'handler.go'                                                /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
 // that can be found in the LICENSE file.                      /
 //                                                             /
 // by David Skinner                                            /
-// on July 12, 2018                                            /
+// on July7 25, 2018                                           /
 // for Davsk℠ Universe 4.0 project gbase                       /
 //                                                             /
 // /////////////////////////////////////////////////////////////
 
-// Package config loads config data from file
-// or creates the file if it does not exist.
-//
-// Overview
-//
-// Types with a New method are meant to be used to load/save
-// program config.
-//
-// Types without a New method are meant to be embedded or used
-// in another config struct.
-//
-// If you make any changes in the config within the program,
-// you must then use the MustUpdate method.
-package config
+// Package handler defines web services
+package handler
 
-// Const traceTitle for tracelog.
-const traceTitle = "config"
+import (
+	"log"
+	"net/http"
+)
+
+// Function index is a handler that provides default home page.
+func Index(w http.ResponseWriter, req *http.Request) {
+	// all calls to unknown url paths should return 404
+	if req.URL.Path != "/" {
+		log.Printf("404: %s", req.URL.String())
+		http.NotFound(w, req)
+		return
+	}
+	http.ServeFile(w, req, "index.html")
+}

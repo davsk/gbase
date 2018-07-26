@@ -1,5 +1,5 @@
 // /////////////////////////////////////////////////////////////
-// 'cert.go'                                                   /
+// 'Cert.go'                                                   /
 //                                                             /
 // Copyright (c) 2018 Davsk℠. All Rights Reserved.             /
 // Use of this source code is governed by an ISC License (ISC) /
@@ -32,19 +32,19 @@ import (
 	"github.com/goinggo/tracelog"
 )
 
-type cert struct {
+type Cert struct {
 	HostName string
 	CertFile string
 	KeyFile  string
 }
 
-func (ct *cert) Default(name string) {
+func (ct *Cert) Default(name string) {
 	ct.HostName = name
-	ct.CertFile = "cert.pem"
+	ct.CertFile = "Cert.pem"
 	ct.KeyFile = "key.pem"
 }
 
-func (ct *cert) Validate() {
+func (ct *Cert) Validate() {
 	// const FunctionName for tracelog.
 	const traceFunctionName = "Cert.Validate"
 	tracelog.Started(traceTitle, traceFunctionName)
@@ -53,7 +53,7 @@ func (ct *cert) Validate() {
 
 	if _, err := os.Stat(ct.CertFile); os.IsExist(err) {
 		if _, err := os.Stat(ct.KeyFile); os.IsExist(err) {
-			// TODO(dls) check cert date for expiration.
+			// TODO(dls) check Cert date for expiration.
 			// Completed successfully.
 			tracelog.Completed(traceTitle, traceFunctionName)
 
@@ -67,7 +67,7 @@ func (ct *cert) Validate() {
 	tracelog.Completed(traceTitle, traceFunctionName)
 }
 
-func (ct *cert) Generate() (err error) {
+func (ct *Cert) Generate() (err error) {
 	// const FunctionName for tracelog.
 	const traceFunctionName = "Cert.Generate"
 	tracelog.Started(traceTitle, traceFunctionName)

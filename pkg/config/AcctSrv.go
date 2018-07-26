@@ -24,7 +24,7 @@ const (
 // AcctSrv is the config interface for WAN server.
 type AcctSrv struct {
 	Title string
-	Ports
+	Service
 	Acct Connect
 }
 
@@ -45,7 +45,7 @@ func NewAcctSrv() AcctSrv {
 // Default AcctSrv receives title string.
 func (as *AcctSrv) Default() {
 	as.Title = kAsTitle
-	as.Ports.Default()
+	as.Service.Default("davsk.sytes.net")
 	as.Acct.Default("acct")
 }
 
