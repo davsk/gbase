@@ -24,7 +24,7 @@ const (
 // gameserver config interface for LAN  server.
 type GameSrv struct {
 	Title string
-	Ports
+	Service
 	Acct Server
 	Game Connect
 }
@@ -46,7 +46,7 @@ func NewGameSrv() GameSrv {
 // Default gameserver
 func (gs *GameSrv) Default() {
 	gs.Title = kGsTitle
-	gs.Ports.Default()
+	gs.Service.Default("universe.servegame.com")
 	gs.Acct.Default("acct")
 	gs.Game.Default("game")
 }

@@ -16,7 +16,10 @@
 package gameserver // import "davsk.net/gbase/pkg/svc/gameserver"
 
 import (
+	"net/http"
+
 	"davsk.net/gbase/pkg/config"
+	"davsk.net/gbase/pkg/handler"
 	"davsk.net/gbase/pkg/must"
 	"github.com/goinggo/tracelog"
 )
@@ -42,8 +45,12 @@ func Start() error {
 		"GameDatabase := %v", db)
 
 	// handlers
+	// serve index (and anything else) as https.
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", handler.Index)
 
 	// start
+	cfg.Start(mux)
 
 	// Completed successfully.
 	tracelog.Completed(traceTitle, traceFunctionName)
