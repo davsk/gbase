@@ -28,8 +28,8 @@ import (
 
 // Do nothing until you manually exit with CTRL-C.
 func Do() error {
-	fmt.Println("Waiting for you to manually exit with CTRL-C or Stop Process" +
-		" with Ctrl-F2 in GoLand.")
+	fmt.Println("Waiting for you to manually exit with CTRL-C or")
+	fmt.Println("Stop Process with Ctrl-F2 in JetBrains GoLand & WebStorm.")
 
 	// wait
 	c := make(chan os.Signal)
