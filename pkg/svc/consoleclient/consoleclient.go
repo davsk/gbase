@@ -28,12 +28,16 @@
 package consoleclient
 
 import (
+	"fmt"
+	"log"
 	"net/http"
+	"os"
 
 	"davsk.net/gbase/pkg/config"
 	"davsk.net/gbase/pkg/handler"
 	"davsk.net/gbase/pkg/must"
 	"github.com/goinggo/tracelog"
+	"gopkg.in/urfave/cli.v2"
 )
 
 // const Title for tracelog
@@ -64,6 +68,18 @@ func Start() error {
 	cfg.Start(mux)
 
 	// go console.Start()
+	app := new(cli.App)
+	app.Name = "boom"
+	app.Usage = "make an explosive entrance"
+	app.Action = func(c *cli.Context) error {
+		fmt.Println("boom! I say!")
+		return nil
+	}
+
+	err := app.Run(os.Args)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	// return status
 	return nil

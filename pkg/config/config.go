@@ -24,7 +24,7 @@
 //
 // If you make any changes in the config within the program,
 // you must then use the MustUpdate method.
-package config
+package config // import "davsk.net/gbase/pkg/config"
 
 // Const traceTitle for tracelog.
 const traceTitle = "config"

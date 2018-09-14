@@ -24,7 +24,7 @@ const (
 // AcctSrv is the config interface for WAN server.
 type AcctSrv struct {
 	Title string
-	Service
+	Service // toml "Service"
 	Acct Connect
 }
 
